@@ -16,6 +16,25 @@
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
+    .download-btn {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .download-btn:hower {
+      background-color: #218838;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .download-btn:active {
+      transform: translateY(1px);
+    }
 </style>
     <title>Antivirus Comparison Guide</title>
 </head>
@@ -37,7 +56,7 @@
         <li>Can be resource-heavy</li>
         <li>Annual subscription required</li>
     </ul>
-    <a href="https://us.norton.com" target="_blank">Download Norton</a>
+    <a href="https://us.norton.com" target="_blank"class="download-btn">Download Norton</a>
 </div>
 </body>
 </html>
