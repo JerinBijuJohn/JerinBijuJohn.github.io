@@ -1,123 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Antivirus Comparison Guide 2025</title>
+
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f5f5f5;
-    }
-    header {
-        background-color: #28a745;
-        color: white;
-        padding: 40px 20px;
-        border-radius: 15px;
-        margin-bottom: 40px;
-        text-align: center;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    header h1 {
-        color: white;
-        margin: 0;
-        font-size: 2.5em;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    header p {
-        color: white;
-        font-size: 1.2em;
-        opacity: 0.95;
-        margin-top: 10px;
-    }
 
-    .antivirus-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 25px;
-    }
-    
-    .antivirus-card {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-        height: fit-content;
-        border: 1px solid #e0e0e0;
-    }
-    
-    .antivirus-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+* {
+    box-sizing: border-box;
+}
 
-    .antivirus-card p,
-    .antivirus-card li {
-        margin: 3px 0;
-        line-height: 1.2;
-    }
-    
-    .antivirus-card ul {
-        margin: 5px 0;
-        padding-left: 20px;
-    }
-    
-    .antivirus-card h3 {
-        margin: 8px 0 3px 0;
-        color: #333;
-    }
-    
-    .download-btn {
-        display: inline-block;
-        background-color: #28a745;
-        color: white;
-        padding: 12px 24px;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        width: 80%;
-        text-align: center;
-        margin-top: 12px;
-    }
-    .download-btn:hover {
-        background-color: #218838;
-        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
-        transform: scale(1.02);
-    }
-    .download-btn:active {
-        transform: translateY(2px);
-    }
-    h2 {
-        color: #28a745;
-        margin-top: 0;
-        margin-bottom: 12px;
-        border-bottom: 2px solid #28a745;
-        padding-bottom: 8px;
-    }
-    footer {
-        text-align: center;
-        margin-top: 50px;
-        padding: 20px;
-        color: #666;
-        border-top: 2px solid #28a745;
-    }
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #0a0c0f;
+    color: #e1e7f0;
+}
+
+header {
+    background: linear-gradient(45deg, #ff003c, #ff6b00);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 3px solid #00ffff;
+    box-shadow: 0 0 30px rgba(0,255,255,0.3);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.antivirus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    align-items: stretch;
+}
+
+.antivirus-card {
+    background: #1a1e24;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #00ffff33;
+    box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.antivirus-card:hover {
+    transform: translateY(-5px);
+    border-color: #00ffff;
+    box-shadow: 0 0 30px rgba(0,255,255,0.3);
+    transition: 0.3s ease;
+}
+
+.antivirus-card h2 {
+    color: #00ffff;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #ff6b00;
+    padding-bottom: 8px;
+}
+
+.antivirus-card h3 {
+    margin: 12px 0 6px 0;
+    color: #00ffff;
+}
+
+.antivirus-card p {
+    margin: 6px 0;
+}
+
+.antivirus-card ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.price-label {
+    color: #ff6b00;
+    font-weight: bold;
+}
+
+.price-value {
+    color: #00ffff;
+    font-weight: bold;
+}
+
+.download-btn {
+    background: linear-gradient(45deg, #ff003c, #ff6b00);
+    color: white;
+    padding: 14px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.download-btn:hover {
+    box-shadow: 0 0 20px rgba(255,0,60,0.5);
+    transform: scale(1.02);
+    transition: 0.3s ease;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 25px;
+    color: #888;
+    border-top: 2px solid #ff6b00;
+}
+
 </style>
-    <title>Antivirus Comparison Guide 2025</title>
 </head>
+
 <body>
-    <header>
-        <h1>🛡️ Top Antivirus Software 2025</h1>
-        <p>Comparing features, prices, and protection levels</p>
-    </header>
-    <div class="antivirus-grid">
-        <div class="antivirus-card">
+
+<header>
+    <h1>🛡️ Top Antivirus Software 2025</h1>
+    <p>Comparing features, prices, and protection levels</p>
+</header>
+
+<div class="antivirus-grid">
+
+   
+    <div class="antivirus-card">
+        <div>
             <h2>1. Norton Antivirus</h2>
-            <p><strong>Price:</strong> $39.99/year</p>
-            <p><strong>Type:</strong> Paid (Free trial)</p>
+            <p><span class="price-label">Price:</span> <span class="price-value">$39.99/year</span></p>
+            <p><span class="price-label">Type:</span> Paid (Free trial)</p>
             <h3>Pros:</h3>
             <ul>
                 <li>✅ Excellent malware detection</li>
@@ -129,12 +154,16 @@
                 <li>❌ Can be resource-heavy</li>
                 <li>❌ Annual subscription</li>
             </ul>
-            <a href="https://us.norton.com" target="_blank" class="download-btn">Download Norton</a>
         </div>
-        <div class="antivirus-card">
+        <a href="https://us.norton.com" target="_blank" class="download-btn">Download Norton</a>
+    </div>
+
+   
+    <div class="antivirus-card">
+        <div>
             <h2>2. Bitdefender Plus</h2>
-            <p><strong>Price:</strong> $29.99/year</p>
-            <p><strong>Type:</strong> Paid (Free version)</p>
+            <p><span class="price-label">Price:</span> <span class="price-value">$29.99/year</span></p>
+            <p><span class="price-label">Type:</span> Paid (Free version)</p>
             <h3>Pros:</h3>
             <ul>
                 <li>✅ Excellent detection scores</li>
@@ -147,12 +176,16 @@
                 <li>❌ Complex interface</li>
                 <li>❌ Features in higher tiers</li>
             </ul>
-            <a href="https://www.bitdefender.com" target="_blank" class="download-btn">Download Bitdefender</a>
         </div>
-        <div class="antivirus-card">
+        <a href="https://www.bitdefender.com" target="_blank" class="download-btn">Download Bitdefender</a>
+    </div>
+
+    
+    <div class="antivirus-card">
+        <div>
             <h2>3. Malwarebytes Premium</h2>
-            <p><strong>Price:</strong> $44.99/year</p>
-            <p><strong>Type:</strong> Paid (Free scanner)</p>
+            <p><span class="price-label">Price:</span> <span class="price-value">$44.99/year</span></p>
+            <p><span class="price-label">Type:</span> Paid (Free scanner)</p>
             <h3>Pros:</h3>
             <ul>
                 <li>✅ Excellent malware removal</li>
@@ -165,12 +198,16 @@
                 <li>❌ No traditional AV</li>
                 <li>❌ Works best with others</li>
             </ul>
-            <a href="https://www.malwarebytes.com" target="_blank" class="download-btn">Download Malwarebytes</a>
         </div>
-        <div class="antivirus-card">
+        <a href="https://www.malwarebytes.com" target="_blank" class="download-btn">Download Malwarebytes</a>
+    </div>
+
+   
+    <div class="antivirus-card">
+        <div>
             <h2>4. Avast Free</h2>
-            <p><strong>Price:</strong> Free</p>
-            <p><strong>Type:</strong> Free (Premium upgrade)</p>
+            <p><span class="price-label">Price:</span> <span class="price-value">FREE</span></p>
+            <p><span class="price-label">Type:</span> Free (Premium upgrade)</p>
             <h3>Pros:</h3>
             <ul>
                 <li>✅ Completely free</li>
@@ -184,12 +221,16 @@
                 <li>❌ Privacy concerns</li>
                 <li>❌ Slows older PCs</li>
             </ul>
-            <a href="https://www.avast.com" target="_blank" class="download-btn">Download Avast</a>
         </div>
-        <div class="antivirus-card">
+        <a href="https://www.avast.com" target="_blank" class="download-btn">Download Avast</a>
+    </div>
+
+   
+    <div class="antivirus-card">
+        <div>
             <h2>5. Kaspersky</h2>
-            <p><strong>Price:</strong> $29.99/year</p>
-            <p><strong>Type:</strong> Paid (Free version)</p>
+            <p><span class="price-label">Price:</span> <span class="price-value">$29.99/year</span></p>
+            <p><span class="price-label">Type:</span> Paid (Free version)</p>
             <h3>Pros:</h3>
             <ul>
                 <li>✅ Excellent malware detection</li>
@@ -203,12 +244,16 @@
                 <li>❌ US govt ban</li>
                 <li>❌ Can be intrusive</li>
             </ul>
-            <a href="https://www.kaspersky.com" target="_blank" class="download-btn">Download Kaspersky</a>
         </div>
-        <div class="antivirus-card">
+        <a href="https://www.kaspersky.com" target="_blank" class="download-btn">Download Kaspersky</a>
+    </div>
+
+  
+    <div class="antivirus-card">
+        <div>
             <h2>6. Microsoft Defender</h2>
-            <p><strong>Price:</strong> Free (Built-in)</p>
-            <p><strong>Type:</strong> Free</p>
+            <p><span class="price-label">Price:</span> <span class="price-value">FREE (Built-in)</span></p>
+            <p><span class="price-label">Type:</span> Free</p>
             <h3>Pros:</h3>
             <ul>
                 <li>✅ Completely free</li>
@@ -223,11 +268,15 @@
                 <li>❌ Windows-only</li>
                 <li>❌ Weak vs zero-day</li>
             </ul>
-            <a href="https://www.microsoft.com/windows/comprehensive-security" target="_blank" class="download-btn">Learn More</a>
-        </div>        
+        </div>
+        <a href="https://www.microsoft.com/windows/comprehensive-security" target="_blank" class="download-btn">Learn More</a>
     </div>
-    <footer style="text-align: center; margin-top: 50px; padding: 20px; color: #666; border-top: 2px solid #28a745;">
-        <p>🛡️ Antivirus Comparison Guide 2025 | Created by Jerin Biju John</p>
-    </footer>    
+
+</div>
+
+<footer>
+    <p>🛡️ Antivirus Comparison Guide 2025 | Created by Jerin Biju John | Web Development Assignment</p>
+</footer>
+
 </body>
 </html>
