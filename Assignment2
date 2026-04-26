@@ -24,7 +24,6 @@
       overflow-x: hidden;
     }
 
-    /* magical floating orbs */
     body::before {
       content: '';
       position: absolute;
@@ -52,7 +51,6 @@
       filter: blur(60px);
     }
 
-    /* main game card */
     .game-container {
       position: relative;
       z-index: 10;
@@ -67,7 +65,6 @@
       border: 1px solid rgba(255, 235, 200, 0.3);
     }
 
-    /* title section with astral vibe */
     .title-section {
       text-align: center;
       margin-bottom: 1.5rem;
@@ -106,7 +103,6 @@
       100% { opacity: 0.9; text-shadow: 0 0 0px #c084fc;}
     }
 
-    /* VS Arena */
     .arena {
       display: flex;
       justify-content: space-between;
@@ -179,7 +175,6 @@
       border: 1px solid #ffcd94;
     }
 
-    /* action buttons (stone, paper, scissors) */
     .choices-panel {
       display: flex;
       justify-content: center;
@@ -228,7 +223,6 @@
       transform: scale(0.97);
     }
 
-    /* result & score area */
     .result-area {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 2rem;
@@ -298,7 +292,6 @@
       letter-spacing: 1px;
     }
 
-    /* imaginative floating particles */
     .floating-particle {
       position: fixed;
       pointer-events: none;
@@ -335,7 +328,6 @@
     <div class="subtit">⚡ stone · paper · scissors ⚡</div>
   </div>
 
-  <!-- VS Arena -->
   <div class="arena">
     <div class="player-card">
       <div class="label">🌙 YOU</div>
@@ -350,7 +342,6 @@
     </div>
   </div>
 
-  <!-- action buttons unique + imaginative naming -->
   <div class="choices-panel">
     <button class="choice-btn" data-move="stone">🪨 <span>• BASALT •</span></button>
     <button class="choice-btn" data-move="paper">📄 <span>• PARCHMENT •</span></button>
@@ -369,12 +360,10 @@
 </div>
 
 <script>
-  // ========== IMAGINATIVE SCRIPT ==========
   (function() {
-    // Game state
     let playerScore = 0;
     let aiScore = 0;
-    let roundActive = true;   // just for subtle animation lock, but we allow rapid play
+    let roundActive = true;
     const moves = {
       stone: { name: "STONE", icon: "🪨", beats: "scissors" },
       paper: { name: "PAPER", icon: "📄", beats: "stone" },
@@ -383,7 +372,6 @@
     
     const moveKeys = ['stone', 'paper', 'scissors'];
     
-    // DOM elements
     const playerIconEl = document.getElementById('playerIcon');
     const playerChoiceNameEl = document.getElementById('playerChoiceName');
     const aiIconEl = document.getElementById('aiIcon');
@@ -394,15 +382,12 @@
     const resetBtn = document.getElementById('resetGame');
     const choiceBtns = document.querySelectorAll('.choice-btn');
     
-    // Helper: update UI scores
     function updateScoreUI() {
       playerScoreSpan.innerText = playerScore;
       aiScoreSpan.innerText = aiScore;
     }
     
-    // creative particle burst effect (cosmic glitter when someone wins round)
     function createCelebrationSpark(x, y, isPlayerVictory) {
-      // create 12-20 floating particles around given position (or random near center)
       const containerRect = document.querySelector('.game-container').getBoundingClientRect();
       const centerX = containerRect.left + containerRect.width / 2;
       const centerY = containerRect.top + containerRect.height / 3;
@@ -427,7 +412,6 @@
         particle.style.boxShadow = '0 0 8px gold';
         document.body.appendChild(particle);
         
-        // animate upward fade
         requestAnimationFrame(() => {
           particle.style.transform = `translateY(${-40 + (Math.random() * 30)}px) translateX(${(Math.random() - 0.5) * 50}px)`;
           particle.style.opacity = '0';
@@ -438,7 +422,6 @@
       }
     }
     
-    // slow ripple effect on icons (visual feedback)
     function animateIcon(element, isPlayer = true) {
       if (!element) return;
       element.style.transform = 'scale(1.2)';
@@ -446,7 +429,6 @@
       setTimeout(() => {
         element.style.transform = 'scale(1)';
       }, 150);
-      // also add glint background for card
       const parentCard = isPlayer ? document.querySelector('.player-card') : document.querySelector('.ai-card');
       if (parentCard) {
         parentCard.style.transition = 'background 0.2s';
@@ -457,53 +439,42 @@
       }
     }
     
-    // Core game logic
     function playRound(playerMove) {
-      if (!roundActive) return; // safety lock, but we can enable anyway
+      if (!roundActive) return;
       
       const aiRandomMove = moveKeys[Math.floor(Math.random() * moveKeys.length)];
       const playerMoveData = moves[playerMove];
       const aiMoveData = moves[aiRandomMove];
       
-      // update icons & names
       playerIconEl.innerText = playerMoveData.icon;
       playerChoiceNameEl.innerText = playerMoveData.name;
       aiIconEl.innerText = aiMoveData.icon;
       aiChoiceNameEl.innerText = aiMoveData.name;
       
-      // animations for both sides
       animateIcon(playerIconEl, true);
       animateIcon(aiIconEl, false);
       
-      // determine winner
       let result = '';
-      let roundWinner = null; // 'player', 'ai', 'tie'
+      let roundWinner = null;
       
       if (playerMove === aiRandomMove) {
         result = `⚖️ MYSTIC TIE ⚖️ · Both chose ${playerMoveData.name}`;
         roundWinner = 'tie';
       } else if (playerMoveData.beats === aiRandomMove) {
-        // player wins
         playerScore++;
         result = `✨ VICTORY! ✨ Your ${playerMoveData.name} shatters ${aiMoveData.name}. +1 Starlight!`;
         roundWinner = 'player';
       } else {
-        // ai wins
         aiScore++;
         result = `🌪️ COSMOS STRIKES 🌪️ · ${aiMoveData.name} overcomes your ${playerMoveData.name}.`;
         roundWinner = 'ai';
       }
       
-      // update scores UI
       updateScoreUI();
-      
-      // game message + effect
       resultMsgEl.innerHTML = result;
       
-      // add thrilling particle magic on win (and not tie)
       if (roundWinner === 'player') {
         createCelebrationSpark(0, 0, true);
-        // additional joyful shimmer
         resultMsgEl.style.transform = 'scale(1.01)';
         setTimeout(() => { resultMsgEl.style.transform = ''; }, 300);
       } else if (roundWinner === 'ai') {
@@ -511,39 +482,28 @@
         resultMsgEl.style.transform = 'scale(0.99)';
         setTimeout(() => { resultMsgEl.style.transform = ''; }, 300);
       } else {
-        // tie shimmer : ethereal glow
         resultMsgEl.style.textShadow = '0 0 6px #c0c0ff';
         setTimeout(() => { resultMsgEl.style.textShadow = ''; }, 400);
       }
       
-      // extra animated loading? no, but we show win streak vibe
-      // update any special effect on scoreboard
       if (playerScore === 5 || aiScore === 5) {
-        // optional win announcement
         const winnerMsg = playerScore === 5 ? "🏆 YOU REACHED ETHER SUPREMACY! 🏆" : "🌀 COSMOS ACHIEVED GALACTIC VICTORY 🌀";
         resultMsgEl.innerHTML = `${winnerMsg}<br>✨ ${result} ✨<br> click RESET to reforge fate`;
-        // disable further moves until reset but we actually allow reset only, but also if someone clicks reset it'll reset anyway.
-        // But we do not disable moves but after game end we encourage reset. Provide soft lock for moves if score max? To avoid weirdness let's keep playing but reset recommended.
         if (playerScore === 5 || aiScore === 5) {
-          // optional visual lock, but you can still play, but showing message.
           choiceBtns.forEach(btn => {
-            btn.style.pointerEvents = 'auto'; // still clickable but user see overflow? It's okay, they may continue but final reset is needed, add check for game end message in each move.
+            btn.style.pointerEvents = 'auto';
           });
-          // flash border
           document.querySelector('.game-container').style.boxShadow = '0 0 0 3px gold, 0 0 25px gold';
           setTimeout(() => {
-            if(playerScore === 5 || aiScore === 5) return; // keep subtle
+            if(playerScore === 5 || aiScore === 5) return;
           }, 500);
         }
       } else {
         document.querySelector('.game-container').style.boxShadow = '';
       }
       
-      // reset glow after round end
       if (playerScore !== 5 && aiScore !== 5) {
-        // normal behavior
       } else {
-        // if exact victory, add big stars effect
         createCelebrationSpark(0,0, playerScore ===5);
         if (playerScore===5) {
           for(let i=0;i<12;i++) createCelebrationSpark(0,0,true);
@@ -553,39 +513,32 @@
       }
     }
     
-    // Reset all stats
     function resetGame() {
       playerScore = 0;
       aiScore = 0;
       updateScoreUI();
       
-      // reset default UI to stone vs paper (imaginative neutral)
       playerIconEl.innerText = "🪨";
       playerChoiceNameEl.innerText = "STONE";
       aiIconEl.innerText = "📄";
       aiChoiceNameEl.innerText = "PAPER";
       resultMsgEl.innerHTML = "🌀 GAME REFRESHED · MAKE YOUR MOVE 🌀";
-      // remove any disable style from score end overs
       choiceBtns.forEach(btn => {
         btn.style.pointerEvents = 'auto';
       });
       document.querySelector('.game-container').style.boxShadow = '';
-      // extra glitter reset effect
       const container = document.querySelector('.game-container');
       container.style.transform = 'scale(1.01)';
       setTimeout(() => { container.style.transform = ''; }, 200);
     }
     
-    // Event binding with unique flavor
     choiceBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const moveAttr = btn.getAttribute('data-move');
         if (moveAttr && (playerScore < 5 && aiScore < 5)) {
-          // if game has not reached max score, proceed normally
           playRound(moveAttr);
         } else {
-          // if game already ended with 5 points, we show hint but still reset is better
           if (playerScore >=5 || aiScore >=5) {
             resultMsgEl.innerHTML = "🏁 EPILOGUE REACHED · PRESS RESET TO START NEW SAGA 🏁";
             resultMsgEl.style.animation = 'gentlePulse 0.8s';
@@ -601,10 +554,8 @@
       resetGame();
     });
     
-    // initialize UI with fresh score + default choices
     resetGame();
     
-    // Extra imaginative:  firefly mouse movement tracer? just small floating aura for fun
     document.body.addEventListener('mousemove', (e) => {
       if (Math.random() > 0.97) {
         const aura = document.createElement('div');
@@ -628,7 +579,6 @@
       }
     });
     
-    // also dynamic orientation adjust
     window.addEventListener('resize', () => {});
   })();
 </script>
